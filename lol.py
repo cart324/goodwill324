@@ -68,6 +68,37 @@ while True:
             money = bat * re + money
         else:
             print(f"{goa}연승도전 {gob}라운드에서 탈락하셨습니다. 배팅액을 잃습니다.")
+    elif mode == 3:
+        winc = 0
+        drawc = 0
+        losec = 0
+        while true == 0:
+            bat1 = int(input("배팅할 액수를 입력하세요:"))
+            count = int(input("연속으로 진행할 횟수를 입력하세요:"))
+            bat = bat1 * count
+            true = fo(money, bat)
+        money = money - bat
+        bat = bat1
+        A = input("연속으로 무엇을 내시겟습니까?")
+        while count > 0:
+            count = count - 1
+            B = random.choice(["가위", "바위", "보"])
+            C = game(A, B)
+            if C == 1:
+                winc = winc + 1
+            elif C == 2:
+                drawc = drawc + 1
+            elif C == 3:
+                losec = losec + 1
+        print(f"{winc}번 이김, {drawc}번 비김, {losec}번 짐")
+        while winc > 0:
+            winc = winc - 1
+            money = win(money, bat)
+        while drawc > 0:
+            drawc = drawc - 1
+            money = draw(money, bat)
+    elif mode == 1234567890324:
+        money = money + int(input("추가할 액수를 입력해세요:"))
     else:
         print("뷁")
 print("돈을 모두 잃었습니다. 게임을 종료합니다.")
